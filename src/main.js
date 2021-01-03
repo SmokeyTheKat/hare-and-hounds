@@ -231,6 +231,10 @@ canvas.addEventListener("mousedown", function(e)
 		{
 			if (turn == 0)
 			{
+				for (var j = 0; j < wa.length; j++)
+				{
+					if (na[i] == wa[j]) return;
+				}
 				if (na[i] == h)
 				{
 					ns.deselect();
