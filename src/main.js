@@ -217,6 +217,8 @@ var ns = n1;
 
 var turn = 1;
 
+var upDownCount = 0;
+
 draw_text(context, "HOUNDS", xcenter, ycenter-yquarter-yeight, "54", "gray");
 
 canvas.addEventListener("mousedown", function(e)
@@ -282,6 +284,17 @@ canvas.addEventListener("mousedown", function(e)
 							break;
 						}
 						if (na[i].xpos < wa[j].xpos) break;
+						if (na[i] == wa[j].u || na[i] == wa[j].d)
+							upDownCount++;
+						else
+							upDownCount = 0;
+						if (upDownCount == 10)
+						{
+							clear_text(context, "#cccccc");
+							draw_text(context, "HARE WINS", xcenter, ycenter-yquarter-yeight, "54", "yellow");
+							console.log("HARE WINS");
+							return;
+						}
 						ns.deselect();
 						ns.set_color("white");
 						wa[j] = na[i];
